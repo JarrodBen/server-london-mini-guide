@@ -2,7 +2,7 @@ const express = require("express");
 const app = express()
 
 app.get("/",  (req, res) => {
-    res.send("Home is where 127.0.0.1 is");
+    res.send("Home is where The Cake is");
   });
 
   app.get("/pharmacies",  (req, res) => {
