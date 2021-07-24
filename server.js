@@ -1,6 +1,13 @@
 const express = require("express");
 const app = express()
 
+const stratford = require("./data/Stratford.json")
+const data = {
+   Stratford: stratford
+}
+// const harrow = require("./data/Harrow.json")
+// const heathrow = require("./data/Heathrow.json")
+
 app.get("/",  (req, res) => {
     res.send("Home is where The Cake is");
   });
@@ -21,11 +28,11 @@ app.get("/",  (req, res) => {
     res.send("These are the doctors for each city")
     })
 
-  app.get("/pharmacies/:city", (req, res) => {
-    let cityPharm = parseInt(req.params.city)
+  app.get("/:city/pharmacies", (req, res) => {
+    let cityPharm = (req.params.city)
 
-    if (pharmacies[cityPharm]) 
-    res.json(pharmacies[cityPharm])
+    if (data[cityPharm]) 
+    res.json(data[cityPharm].pharmacies)
     else {
       res.status(404)
       res.json({msg: `Could not find specified ${cityPharm} in that city`})
@@ -33,11 +40,11 @@ app.get("/",  (req, res) => {
   })
 
   
-  app.get("/colleges/:city", (req, res) => {
-    let cityCollege = parseInt(req.params.city)
+  app.get("/:city/colleges", (req, res) => {
+    let cityCollege = (req.params.city)
 
-    if (colleges[cityCollege]) 
-    res.json(colleges[cityCollege])
+    if (data[cityCollege]) 
+    res.json(data[cityCollege].colleges)
     else {
       res.status(404)
       res.json({msg: `Could not find specified ${cityCollege} in that city`})
@@ -45,11 +52,11 @@ app.get("/",  (req, res) => {
   })
 
   
-  app.get("/doctors/:city", (req, res) => {
-    let cityDoctors = parseInt(req.params.city)
+  app.get("/:city/doctors", (req, res) => {
+    let cityDoctors = (req.params.city)
 
-    if (doctors[cityDoctors]) 
-    res.json(doctors[cityDoctors])
+    if (data[cityDoctors]) 
+    res.json(data[cityDoctors].doctors)
     else {
       res.status(404)
       res.json({msg: `Could not find specified ${cityDoctors} in that city`})
@@ -57,11 +64,11 @@ app.get("/",  (req, res) => {
   })
 
   
-  app.get("/hospitals/:city", (req, res) => {
-    let cityHosp = parseInt(req.params.city)
+  app.get("/:city/hospitals", (req, res) => {
+    let cityHosp = (req.params.city)
 
-    if (hospitals[cityHosp]) 
-    res.json(hospitals[cityHosp])
+    if (data[cityHosp]) 
+    res.json(data[cityHosp].hospitals)
     else {
       res.status(404)
       res.json({msg: `Could not find specified ${cityHosp} in that city`})
