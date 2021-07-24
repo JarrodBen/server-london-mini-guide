@@ -6,6 +6,9 @@ const data = {
    Stratford: stratford
 }
 // const harrow = require("./data/Harrow.json")
+    //const data = {
+   //Stratford: stratford
+  //}
 // const heathrow = require("./data/Heathrow.json")
 
 app.get("/",  (req, res) => {
